@@ -8,14 +8,11 @@
 int main () {
 
   printf("START\n");
-  int f = fork();
-  //printf("%d, also pid: %d\n", f, getpid());
-  // parent
-  f = 0;
-  if (f) f = fork();
-  // child
 
-  
+  // Child 1
+  int f = fork();
+  // Child 2
+  if (f) f = fork();
   
   if (!f) {
     int rand = 1;
@@ -23,11 +20,12 @@ int main () {
     sleep(rand);
     printf("Child is dead\n");
     return rand;
-  }
-
-  wait(&status);
-  printf("Temp: %d\n", WEXITSTATUS(status));
+  } else {
+    int status;
+    wait(&status);
+    printf("Child %d cooked for %d seconds\n", f, WEXITSTATUS(status));
   
-  printf("boi\n");
+    printf("END\n");
+  }
   
 }
