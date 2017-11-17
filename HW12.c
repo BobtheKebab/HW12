@@ -22,11 +22,11 @@ int main () {
 
   //if child...sleep for rand num and return it
   if (!f) {
-    //rand() % 16 yields 1-15; 0-15 + 5 overall yields 5-20 inclusive
+    printf("Child pid: %d\n", getpid());
+    //rand() % 16 yields 0-15; 0-15 + 5 overall yields 5-20 inclusive
     int r;
     srand(time(NULL));
     r = (rand() % 16) + 5;
-    printf("Child pid: %d\n", getpid());
     sleep(r);
     printf("Child is dead\n");
     return r;
