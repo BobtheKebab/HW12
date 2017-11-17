@@ -25,8 +25,9 @@ int main () {
     printf("Child pid: %d\n", getpid());
     //rand() % 16 yields 0-15; 0-15 + 5 overall yields 5-20 inclusive
     int r;
-    srand(time(NULL));
+    srand(getpid()); //creds to kyle
     r = (rand() % 16) + 5;
+    printf("%d", r);
     sleep(r);
     printf("Child is dead\n");
     return r;
