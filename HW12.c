@@ -27,7 +27,6 @@ int main () {
     int r;
     srand(getpid()); //creds to kyle
     r = (rand() % 16) + 5;
-    printf("%d", r);
     sleep(r);
     printf("Child is dead\n");
     return r;
